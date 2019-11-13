@@ -1,0 +1,18 @@
+[
+  {
+  "IncidentId": "INC1024769",
+  "Title": "Tied SKU Quantity missing on DSA",
+  "Description": "Tied SKU Quantity missing on DSA",
+  "State":"InProgress",
+  "AssignmentGroup": "ITOPS-Sales-Support",
+  "AssignedTo": "Saurav Seth",
+  "Source": "Self-Service",
+  "ResponseLevel": "Normal",
+  "Priority": "High",
+  "Product":"PowerEdge",
+  "Category": "Functionality",
+  "Impact": "Medium",
+  "Urgency": "High",
+  "Endpoint": "ServiceNow"
+  }
+]

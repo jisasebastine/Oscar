@@ -1,14 +1,16 @@
 import React from 'react';
-import { ReactiveBase, DataSearch, ResultCard, ReactiveList } from '@appbaseio/reactivesearch';
+import { ReactiveBase, DataSearch, ResultCard, ReactiveList, ResultList } from '@appbaseio/reactivesearch';
 import './App.css';
+import config from './config';
+
 class Main extends React.Component {
   render() {
     return (
       <div className="main-container">
         <ReactiveBase
-          app="swat"
-          type="incident"
-          url="http://localhost:9200/"
+          app={config.elasticsearch_index}
+          type={config.elasticsearch_type}
+          url={config.elasticsearch_url}
         >
         <div className="navbar"> 
           <div className="logo">
@@ -30,8 +32,8 @@ class Main extends React.Component {
           /> 
         </div>
         <div className={"display"}>
-          <div className={"leftSidebar"}>
-            <ResultCard/>
+            <div className={"leftSidebar"}>
+              <ResultCard/>
             </div>  
           </div>
           
@@ -39,7 +41,7 @@ class Main extends React.Component {
             <ReactiveList
               componentId="results"
               dataField={['description','incident_id','task_id']}
-              size={3}
+              size={5}
               pagination={true}
               react={{
                   and: ['mainSearch'],
@@ -47,19 +49,16 @@ class Main extends React.Component {
               render={({ data }) => (
                   <ReactiveList.ResultCardsWrapper>
                       {data.map(item => (
-                          <ResultCard key={item._id}>
-                              <ResultCard.Image
-                                  src=""
-                              />
-                              <ResultCard.Title
+                          <ResultList key={item._id}>
+                              <ResultList.Title
                                   dangerouslySetInnerHTML={{
                                       __html: item.incident_id == null ? item.task_id: item.incident_id,
                                   }}
                               />
-                              <ResultCard.Description>
+                              <ResultList.Description>
                                   {item.description + ' ' + '*'.repeat(item.incident_id)}
-                              </ResultCard.Description>
-                          </ResultCard>
+                              </ResultList.Description>
+                          </ResultList>
                       ))}
                   </ReactiveList.ResultCardsWrapper>
               )}

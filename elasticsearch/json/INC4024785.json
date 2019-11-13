@@ -1,0 +1,18 @@
+[
+  {
+  "IncidentId": "INC4024785",
+  "Title": "Users having issue opening Dellstar due to .net version",
+  "Description": "Users having issue opening Dellstar due to .net version",
+  "State":"InProgress",
+  "AssignmentGroup": "ITOPS-Sales-Support",
+  "AssignedTo": "Joyce James",
+  "Source": "Self-Service",
+  "ResponseLevel": "Normal",
+  "Priority": "High",
+  "Product":"All",
+  "Category": "Performance",
+  "Impact": "Medium",
+  "Urgency": "High",
+  "Endpoint": "ServiceNow"
+  }
+]
