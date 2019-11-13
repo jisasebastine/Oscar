@@ -18,11 +18,8 @@ class Main extends React.Component {
           </div>
           <DataSearch
             componentId="mainSearch"
-            dataField={["incident_id", "description"]}
-            defaultSelected="WEPWPP3900WQ"
+            dataField={["IncidentId", "Description", "Team", "Title"]}
             queryFormat="or"
-            highlight="true"
-            highlightField="incident_id"
             placeholder="Search by Incident ID or Keyword..."
             className="datasearch"
             innerClass={{
@@ -31,16 +28,41 @@ class Main extends React.Component {
             }}
           /> 
         </div>
-        <div className={"display"}>
+          <div className={"display"}>
             <div className={"leftSidebar"}>
-              <ResultCard/>
+            <ReactiveList
+              componentId="results"
+              dataField={['Description','IncidentId']}
+              react={{
+                  and: ['mainSearch'],
+              }}
+              render={({ data }) => (
+                  <ReactiveList.ResultCardsWrapper>
+                      {data.map(item => (
+                        item.Endpoint == 'Confluence' &&                        
+                        <ResultCard key={item._id}>
+                            <ResultCard.Title
+                                dangerouslySetInnerHTML={{
+                                    __html: item.Team
+                                }}
+                            />
+                            <ResultCard.Description>
+                                <div> 
+                                    <a href={item.URL}>{item.URL}</a>
+                                </div>
+                            </ResultCard.Description>
+                        </ResultCard>
+                      ))}
+                  </ReactiveList.ResultCardsWrapper>
+              )}
+            />
             </div>  
           </div>
           
           <div className={"mainBar"}>
             <ReactiveList
               componentId="results"
-              dataField={['description','incident_id','task_id']}
+              dataField={['Description','IncidentId']}
               size={5}
               pagination={true}
               react={{
@@ -49,14 +71,15 @@ class Main extends React.Component {
               render={({ data }) => (
                   <ReactiveList.ResultCardsWrapper>
                       {data.map(item => (
+                        item.Endpoint == 'ServiceNow' &&
                           <ResultList key={item._id}>
                               <ResultList.Title
                                   dangerouslySetInnerHTML={{
-                                      __html: item.incident_id == null ? item.task_id: item.incident_id,
+                                      __html: item.Description,
                                   }}
                               />
                               <ResultList.Description>
-                                  {item.description + ' ' + '*'.repeat(item.incident_id)}
+                                  {item.IncidentId + ' ' + '*'.repeat(item.Description)}
                               </ResultList.Description>
                           </ResultList>
                       ))}
