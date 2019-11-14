@@ -18,7 +18,7 @@ class Main extends React.Component {
         >
         <div className="navbar"> 
           <div className="logo">
-            Oscar - Know your incident
+            INCyclopedia
           </div>
           <DataSearch
             componentId="mainSearch"
@@ -115,6 +115,7 @@ class Main extends React.Component {
                                       <ul style={{'list-style-type': 'none'}}>
                                       <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
                                       <li>{'Assigned To: '+ item.AssignedTo}</li>
+                                      {!!item.Region && <li>{'Region: '+ item.Region}</li>}
                                       <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'purple': 'black'}}>{item.Priority}</span> </li>
                                       {!!item.ResolutionNotes && <li>{'Resolution Notes: '+ item.ResolutionNotes}</li>}
                                       <li style={{color: item.State == 'Closed'? 'green': 'red'}}>{item.State}</li>

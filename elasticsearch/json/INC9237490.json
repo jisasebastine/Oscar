@@ -4,6 +4,7 @@
   "Title": "Send to Quote issue in Dellstar",
   "Description": "Send to Quote not working in Dellstar",
   "State":"InProgress",
+  "Region":"AMER",
   "AssignmentGroup": "ITOPS-Sales-Support",
   "AssignedTo": "Joyce James",
   "Source": "Self-Service",

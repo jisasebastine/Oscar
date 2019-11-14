@@ -4,6 +4,7 @@
   "Title": "Users having issue opening Dellstar due to .net version",
   "Description": "Users having issue opening Dellstar due to .net version",
   "State":"InProgress",
+  "Region":"AMER",
   "AssignmentGroup": "ITOPS-Sales-Support",
   "AssignedTo": "Joyce James",
   "Source": "Self-Service",
