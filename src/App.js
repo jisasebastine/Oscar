@@ -126,7 +126,7 @@ class Main extends React.Component {
                             }  
                             {/* Todo: Gauri can you modify the following so that it looks like a seperate section?*/}
                             {item.IncidentId == item.RelatedIncidentId && item.IncidentId != null &&
-                            <ResultList> Related Incidents </ResultList>
+                            <ResultList  style={{'background-color':'aliceblue'}}> <h2><em>Related Incidents </em></h2></ResultList>
                             }
                           </React.Fragment>
                       ))}
