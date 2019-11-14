@@ -50,7 +50,6 @@ class Main extends React.Component {
             { this.state.loadResults &&
             <ReactiveList
               componentId="results"
-              dataField={['Description','URL1','URL1Title1','URL2','URL2Title2','URL3','URL3Title3','Team']}
               react={{
                   and: ['mainSearch'],
               }}
@@ -94,7 +93,6 @@ class Main extends React.Component {
             { this.state.loadResults &&
             <ReactiveList
               componentId="results"
-              dataField={['Description','IncidentId']}
               size={5}
               pagination={true}
               react={{
@@ -106,18 +104,28 @@ class Main extends React.Component {
                           <React.Fragment> 
                             {item.Endpoint == 'ServiceNow' &&
                               <ResultList key={item._id}>
+                                <ResultList.Content>
                                   <ResultList.Title
                                       dangerouslySetInnerHTML={{
                                           __html: item.Description,
                                       }}
                                   />
                                   <ResultList.Description>
-                                      {item.IncidentId + ' ' + '*'.repeat(item.Description)}
+                                    <div>
+                                      <ul style={{'list-style-type': 'none'}}>
+                                      <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
+                                      <li>{'Team Assigned To: '+ item.AssignedTo}</li>
+                                      <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'purple': 'black'}}>{item.Priority}</span> </li>
+                                      {!!item.ResolutionNotes && <li>{'Resolution Notes: '+ item.ResolutionNotes}</li>}
+                                      <li style={{color: item.State == 'Closed'? 'green': 'red'}}>{item.State}</li>
+                                      </ul>
+                                    </div>
                                   </ResultList.Description>
+                                  </ResultList.Content>
                               </ResultList>
                             }  
                             {/* Todo: Gauri can you modify the following so that it looks like a seperate section?*/}
-                            {item.IncidentId == item.RelatedIncidentId &&
+                            {item.IncidentId == item.RelatedIncidentId && item.IncidentId != null &&
                             <ResultList> Related Incidents </ResultList>
                             }
                           </React.Fragment>
@@ -127,7 +135,7 @@ class Main extends React.Component {
             />
             }
           </div>
-          
+        
         </ReactiveBase>
       </div>
     );
