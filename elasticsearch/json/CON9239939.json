@@ -1,0 +1,16 @@
+[
+    {
+    "ID": "CON9239939",
+    "Title": "Dellstar",
+    "Endpoint": "Confluence",
+    "Team":"Dellstar",
+    "Content": "",
+    "URL1":"https://confluence.dell.com/display/DCPPRIC/.Net+core+version+of+V3+Item+Pricer",
+    "URL1Title1":".Net core version of V3 Item Pricer",
+    "URL2":"https://confluence.dell.com/display/DDTG/Polly+%3A++Dot+Net+Circuit+Breaker+Pattern",
+    "URL2Title2":"Polly : Dot Net Circuit Breaker Pattern",
+    "URL3":"https://confluence.dell.com/display/SAL/%5BDELLSTAR%5D+Basic+troubleshoot+of+DellStar",
+    "URL3Title3":"[DELLSTAR] Basic troubleshoot of DellStar",
+    "RelatedIncidentId":"INC4024785"
+    }
+  ]

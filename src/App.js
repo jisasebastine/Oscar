@@ -26,9 +26,8 @@ class Main extends React.Component {
             queryFormat="or"
             placeholder="Search by Incident ID or Keyword..."
             className="datasearch"
-            onValueChange = {(value) => { value == ''? 
-              this.setState({...this.state, loadResults:false}) :
-              this.setState({...this.state, loadResults:true})
+            onValueChange = {(value) => { 
+              if(value == '') this.setState({...this.state, loadResults:false})
             }}
             onValueSelected = {(value) => {
               if(value != '' && value != null) {
@@ -47,7 +46,7 @@ class Main extends React.Component {
           <div className={"display"}>
             <div className={"leftSidebar"}>
             <h2>Knowledgebase</h2>
-            {!this.state.loadResults && <div> <p> No results. Please use the searchbox </p> </div>}
+            {!this.state.loadResults && <div> No Results found. </div>}
             { this.state.loadResults &&
             <ReactiveList
               componentId="results"
@@ -91,7 +90,7 @@ class Main extends React.Component {
           
           <div className={"mainBar"}>
             <h2>Incidents</h2>
-            {!this.state.loadResults && <div> <p> No results. Please use the searchbox </p> </div>}
+            {!this.state.loadResults && <div> No Results found. </div>}
             { this.state.loadResults &&
             <ReactiveList
               componentId="results"
@@ -104,10 +103,7 @@ class Main extends React.Component {
               render={({ data }) => (
                   <ReactiveList.ResultCardsWrapper>
                       {data.map(item => (                        
-                          <React.Fragment>                          
-                            {/* {item.IncidentId !== item.RelatedIncidentId &&
-                            <div> Related Incidents </div>
-                            } */}
+                          <React.Fragment> 
                             {item.Endpoint == 'ServiceNow' &&
                               <ResultList key={item._id}>
                                   <ResultList.Title
@@ -119,6 +115,10 @@ class Main extends React.Component {
                                       {item.IncidentId + ' ' + '*'.repeat(item.Description)}
                                   </ResultList.Description>
                               </ResultList>
+                            }  
+                            {/* Todo: Gauri can you modify the following so that it looks like a seperate section?*/}
+                            {item.IncidentId == item.RelatedIncidentId &&
+                            <ResultList> Related Incidents </ResultList>
                             }
                           </React.Fragment>
                       ))}
