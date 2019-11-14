@@ -18,7 +18,7 @@ class Main extends React.Component {
           </div>
           <DataSearch
             componentId="mainSearch"
-            dataField={["IncidentId", "Description", "Team", "Title"]}
+            dataField={["IncidentId", "Description", "Team", "Title", "RelatedIncidentId"]}
             queryFormat="or"
             placeholder="Search by Incident ID or Keyword..."
             className="datasearch"
@@ -32,7 +32,7 @@ class Main extends React.Component {
             <div className={"leftSidebar"}>
             <ReactiveList
               componentId="results"
-              dataField={['Description','IncidentId']}
+              dataField={['Description','URL1','URL1Title1','URL2','URL2Title2','URL3','URL3Title3','Team']}
               react={{
                   and: ['mainSearch'],
               }}
@@ -48,7 +48,17 @@ class Main extends React.Component {
                             />
                             <ResultCard.Description>
                                 <div> 
-                                    <a href={item.URL}>{item.URL}</a>
+                                    <a href={item.URL1}>{item.URL1Title1}</a>
+                                </div>
+                            </ResultCard.Description>
+                            <ResultCard.Description>
+                                <div> 
+                                    <a href={item.URL2}>{item.URL2Title2}</a>
+                                </div>
+                            </ResultCard.Description>
+                            <ResultCard.Description>
+                                <div> 
+                                    <a href={item.URL3}>{item.URL3Title3}</a>
                                 </div>
                             </ResultCard.Description>
                         </ResultCard>
@@ -70,18 +80,24 @@ class Main extends React.Component {
               }}
               render={({ data }) => (
                   <ReactiveList.ResultCardsWrapper>
-                      {data.map(item => (
-                        item.Endpoint == 'ServiceNow' &&
-                          <ResultList key={item._id}>
-                              <ResultList.Title
-                                  dangerouslySetInnerHTML={{
-                                      __html: item.Description,
-                                  }}
-                              />
-                              <ResultList.Description>
-                                  {item.IncidentId + ' ' + '*'.repeat(item.Description)}
-                              </ResultList.Description>
-                          </ResultList>
+                      {data.map(item => (                        
+                          <React.Fragment>                          
+                            {/* {item.IncidentId !== item.RelatedIncidentId &&
+                            <div> Related Incidents </div>
+                            } */}
+                            {item.Endpoint == 'ServiceNow' &&
+                              <ResultList key={item._id}>
+                                  <ResultList.Title
+                                      dangerouslySetInnerHTML={{
+                                          __html: item.Description,
+                                      }}
+                                  />
+                                  <ResultList.Description>
+                                      {item.IncidentId + ' ' + '*'.repeat(item.Description)}
+                                  </ResultList.Description>
+                              </ResultList>
+                            }
+                          </React.Fragment>
                       ))}
                   </ReactiveList.ResultCardsWrapper>
               )}
