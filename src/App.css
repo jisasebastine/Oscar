@@ -42,24 +42,32 @@
 .display {
   display: flex;
   margin-top: 60px;
+  flex-direction: row; 
 }
 
 .leftSidebar {
   width: 320px;
   height: 100%;
   padding: 0px 30px;
-  position: absolute;
-  left: 0;
-  right: 0;
   border-right: 1px solid #f0f0f0;
-  overflow-y: auto;
+  overflow-y: auto;     
+  align-items: stretch;
+  min-height: 500px;
 }
 .mainBar {
-  width: calc(100% - 320px);
-  position: relative;
-  left: 320px;
+  width: 700px;
   padding: 0px 30px;
   background-color: #fefefe;
+  margin:0px;   
+  min-height: 500px;
+}
+
+.rightSidebar {
+  width: 250px;
+  padding: 0px 30px;
+  border-left: 1px solid #f0f0f0;
+  margin:0 !important;    
+  min-height: 500px;
 }
 
 .result-data .result-image {
@@ -104,3 +112,6 @@ article {
   margin-bottom:10px !important;
 }
 .css-ixn26d {display: none !important;}
+.center {
+  text-align: center;
+}
