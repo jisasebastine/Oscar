@@ -6,18 +6,22 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  background-color: #0B6AFF;
+  background-color: #006bbd;
   color: #fff;
-  height: 52px;
+  height: 60px;
   font-size: 15px;
   letter-spacing: 0.05rem;
 }
 
-.logo {
-  margin-left: 16px;
-  float: left;
+.inc {
+  margin-left: 32px;
+  font-weight: 700;
+  font-size: 28px;
 }
+.pedia {
 
+  font-weight: 500;
+}
 .datasearch {
   margin-left: auto;
   margin-right: auto;
@@ -44,13 +48,12 @@
   width: 320px;
   height: 100%;
   padding: 0px 30px;
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   border-right: 1px solid #f0f0f0;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
-
 .mainBar {
   width: calc(100% - 320px);
   position: relative;
@@ -65,4 +68,19 @@
 }
 .css-14pyrcn {
   visibility: hidden;
+}
+.related {
+  background-color: #edf9ff  !important;
+  height: 38px !important;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+.description{
+  border: #ccc;
+  background-color: #eeeeee ;
+  padding: 10px;
+  display: flex;
+}
+article {
+  padding: 0px !important;
 }
