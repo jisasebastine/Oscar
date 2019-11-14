@@ -4,6 +4,7 @@
   "Title": "Tied SKU Quantity missing on DSA",
   "Description": "Tied SKU Quantity missing on DSA",
   "State":"InProgress",
+  "Region": "AMER",
   "AssignmentGroup": "ITOPS-Sales-Support",
   "AssignedTo": "Saurav Seth",
   "Source": "Self-Service",

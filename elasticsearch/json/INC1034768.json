@@ -4,6 +4,7 @@
   "Title": "Quantity Mismatch for VP Product",
   "Description": "Quantity Mismatch for VP Product",
   "State":"InProgress",
+  "Region": "AMER",
   "AssignmentGroup": "ITOPS-Sales-Support",
   "AssignedTo": "John Hamburg",
   "Source": "Self-Service",
