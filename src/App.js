@@ -114,7 +114,7 @@ class Main extends React.Component {
                                     <div>
                                       <ul style={{'list-style-type': 'none'}}>
                                       <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
-                                      <li>{'Team Assigned To: '+ item.AssignedTo}</li>
+                                      <li>{'Assigned To: '+ item.AssignedTo}</li>
                                       <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'purple': 'black'}}>{item.Priority}</span> </li>
                                       {!!item.ResolutionNotes && <li>{'Resolution Notes: '+ item.ResolutionNotes}</li>}
                                       <li style={{color: item.State == 'Closed'? 'green': 'red'}}>{item.State}</li>
