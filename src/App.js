@@ -2,8 +2,12 @@ import React from 'react';
 import { ReactiveBase, DataSearch, ResultCard, ReactiveList, ResultList } from '@appbaseio/reactivesearch';
 import './App.css';
 import config from './config';
+import { isNull } from 'util';
 
 class Main extends React.Component {
+  state = {
+    loadResults : false
+  }
   render() {
     return (
       <div className="main-container">
@@ -22,6 +26,18 @@ class Main extends React.Component {
             queryFormat="or"
             placeholder="Search by Incident ID or Keyword..."
             className="datasearch"
+            onValueChange = {(value) => { value == ''? 
+              this.setState({...this.state, loadResults:false}) :
+              this.setState({...this.state, loadResults:true})
+            }}
+            onValueSelected = {(value) => {
+              if(value != '' && value != null) {
+                this.setState({...this.state, loadResults:true});
+              }
+              else {                
+                this.setState({...this.state, loadResults:false});
+              }
+            }}
             innerClass={{
               "input": "searchbox",
               "list": "suggestionlist"
@@ -30,6 +46,9 @@ class Main extends React.Component {
         </div>
           <div className={"display"}>
             <div className={"leftSidebar"}>
+            <h2>Knowledgebase</h2>
+            {!this.state.loadResults && <div> <p> No results. Please use the searchbox </p> </div>}
+            { this.state.loadResults &&
             <ReactiveList
               componentId="results"
               dataField={['Description','URL1','URL1Title1','URL2','URL2Title2','URL3','URL3Title3','Team']}
@@ -66,10 +85,14 @@ class Main extends React.Component {
                   </ReactiveList.ResultCardsWrapper>
               )}
             />
+            }
             </div>  
           </div>
           
           <div className={"mainBar"}>
+            <h2>Incidents</h2>
+            {!this.state.loadResults && <div> <p> No results. Please use the searchbox </p> </div>}
+            { this.state.loadResults &&
             <ReactiveList
               componentId="results"
               dataField={['Description','IncidentId']}
@@ -102,6 +125,7 @@ class Main extends React.Component {
                   </ReactiveList.ResultCardsWrapper>
               )}
             />
+            }
           </div>
           
         </ReactiveBase>
