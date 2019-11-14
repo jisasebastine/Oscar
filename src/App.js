@@ -2,7 +2,6 @@ import React from 'react';
 import { ReactiveBase, DataSearch, ResultCard, ReactiveList, ResultList } from '@appbaseio/reactivesearch';
 import './App.css';
 import config from './config';
-import { isNull } from 'util';
 
 class Main extends React.Component {
   state = {
@@ -17,9 +16,7 @@ class Main extends React.Component {
           url={config.elasticsearch_url}
         >
         <div className="navbar"> 
-          <div className="logo">
-            Oscar - Know your incident
-          </div>
+          <span className="inc">INC</span><span className="pedia">yclopedia</span>
           <DataSearch
             componentId="mainSearch"
             dataField={["IncidentId", "Description", "Team", "Title", "RelatedIncidentId"]}
@@ -88,7 +85,7 @@ class Main extends React.Component {
           </div>
           
           <div className={"mainBar"}>
-            <h2>Incidents</h2>
+          <h2>Incidents</h2>
             {!this.state.loadResults && <div> No Results found. </div>}
             { this.state.loadResults &&
             <ReactiveList
@@ -111,7 +108,7 @@ class Main extends React.Component {
                                       }}
                                   />
                                   <ResultList.Description>
-                                    <div>
+                                    <div className="description">
                                       <ul style={{'list-style-type': 'none'}}>
                                       <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
                                       <li>{'Assigned To: '+ item.AssignedTo}</li>
@@ -126,7 +123,7 @@ class Main extends React.Component {
                             }  
                             {/* Todo: Gauri can you modify the following so that it looks like a seperate section?*/}
                             {item.IncidentId == item.RelatedIncidentId && item.IncidentId != null &&
-                            <ResultList  style={{'background-color':'aliceblue'}}> <h2><em>Related Incidents </em></h2></ResultList>
+                            <ResultList  className="related"> <h2><em>Related Incidents </em></h2></ResultList>
                             }
                           </React.Fragment>
                       ))}
