@@ -85,9 +85,7 @@ class Main extends React.Component {
               )}
             />
             }
-            </div>  
-          </div>
-          
+            </div>            
           <div className={"mainBar"}>
           <h2>Incidents</h2>
             {!this.state.loadResults && <div> No Results found. </div>}
@@ -134,7 +132,16 @@ class Main extends React.Component {
                   </ReactiveList.ResultCardsWrapper>
               )}
             />
-            }
+            }    
+            </div>
+            <div className={"rightSidebar"}>
+            <div className="vertical">
+              <div><h3>Teams Involved</h3></div>
+              <div><img src="/team1.png" width="200"/></div>
+              <div><h3>Regions Impacted</h3></div>
+              <div><img src="/region1.png" width="200"/></div>
+            </div>
+            </div>  
           </div>
         
         </ReactiveBase>
