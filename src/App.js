@@ -43,6 +43,7 @@ class Main extends React.Component {
           <div className={"display"}>
             <div className={"leftSidebar"}>
             <h2>Knowledgebase</h2>
+
             {!this.state.loadResults && <div> No Results found. </div>}
             { this.state.loadResults &&
             <ReactiveList
@@ -54,28 +55,31 @@ class Main extends React.Component {
                   <ReactiveList.ResultCardsWrapper>
                       {data.map(item => (
                         item.Endpoint == 'Confluence' &&                        
-                        <ResultCard key={item._id}>
-                            <ResultCard.Title
+                        <ResultList key={item._id}>
+                          <ResultList.Content>
+                            <ResultList.Title
                                 dangerouslySetInnerHTML={{
                                     __html: item.Team
                                 }}
                             />
-                            <ResultCard.Description>
-                                <div> 
+                            <ResultList.Description>
+                              
+                            <div className="knw-description">
+                              <ul className="list">                                
+                                <li> 
                                     <a href={item.URL1}>{item.URL1Title1}</a>
-                                </div>
-                            </ResultCard.Description>
-                            <ResultCard.Description>
-                                <div> 
+                                </li>
+                                <li> 
                                     <a href={item.URL2}>{item.URL2Title2}</a>
-                                </div>
-                            </ResultCard.Description>
-                            <ResultCard.Description>
-                                <div> 
+                                </li>
+                                <li> 
                                     <a href={item.URL3}>{item.URL3Title3}</a>
-                                </div>
-                            </ResultCard.Description>
-                        </ResultCard>
+                                </li>
+                              </ul>
+                              </div>
+                            </ResultList.Description>
+                            </ResultList.Content>
+                        </ResultList>
                       ))}
                   </ReactiveList.ResultCardsWrapper>
               )}
@@ -121,7 +125,6 @@ class Main extends React.Component {
                                   </ResultList.Content>
                               </ResultList>
                             }  
-                            {/* Todo: Gauri can you modify the following so that it looks like a seperate section?*/}
                             {item.IncidentId == item.RelatedIncidentId && item.IncidentId != null &&
                             <ResultList  className="related"> <h2><em>Related Incidents </em></h2></ResultList>
                             }

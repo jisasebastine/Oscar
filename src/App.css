@@ -81,6 +81,26 @@
   padding: 10px;
   display: flex;
 }
+.knw-description{
+  border: #ccc;
+  background-color: #edf9ff;
+  padding: 10px;
+  display: block;
+  width:100%
+}
+.css-106d0ed {
+  height:200px;
+}
 article {
   padding: 0px !important;
+  height: 200px !important;
 }
+
+.list {
+  list-style: none;
+  padding:0;
+}
+.list li {
+  margin-bottom:10px !important;
+}
+.css-ixn26d {display: none !important;}
