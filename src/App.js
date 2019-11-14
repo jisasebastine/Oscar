@@ -5,7 +5,9 @@ import config from './config';
 
 class Main extends React.Component {
   state = {
-    loadResults : false
+    loadResults : false,
+    showImageForIncident : false,
+    showImage : false
   }
   render() {
     return (
@@ -26,13 +28,21 @@ class Main extends React.Component {
             onValueChange = {(value) => { 
               if(value == '') this.setState({...this.state, loadResults:false})
             }}
-            onValueSelected = {(value) => {
+            onValueSelected = {(value) => {              
+              console.log(value); 
               if(value != '' && value != null) {
                 this.setState({...this.state, loadResults:true});
               }
               else {                
-                this.setState({...this.state, loadResults:false});
+                this.setState({...this.state, loadResults:false, showImage: false});
               }
+              if(value == 'INC4024785') {
+                this.setState({...this.state, loadResults:true, showImageForIncident:true, showImage: true});
+              }
+              else if(value === 'dsa product quantity vp mismatch') {
+                this.setState({...this.state, loadResults:true, showImageForIncident:false, showImage: true});
+              }
+              
             }}
             innerClass={{
               "input": "searchbox",
@@ -134,14 +144,15 @@ class Main extends React.Component {
             />
             }    
             </div>
+            {this.state.showImage && 
             <div className={"rightSidebar"}>
             <div className="vertical">
-              <div><h3>Teams Involved</h3></div>
-              <div><img src="/team1.png" width="200"/></div>
+            <div><h3>Teams Involved</h3></div>
+              <div><img src={this.state.showImageForIncident? "incident_team.png": "keyword_team.png"} width="200"/></div>
               <div><h3>Regions Impacted</h3></div>
-              <div><img src="/region1.png" width="200"/></div>
+              <div><img src={this.state.showImageForIncident? "incident_region.png": "keyword_region.png"} width="200"/></div>
             </div>
-            </div>  
+            </div> } 
           </div>
         
         </ReactiveBase>

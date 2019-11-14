@@ -46,7 +46,7 @@
 }
 
 .leftSidebar {
-  width: 320px;
+  width: 20%;
   height: 100%;
   padding: 0px 30px;
   border-right: 1px solid #f0f0f0;
@@ -55,7 +55,7 @@
   min-height: 500px;
 }
 .mainBar {
-  width: 700px;
+  width: 60%;
   padding: 0px 30px;
   background-color: #fefefe;
   margin:0px;   
@@ -63,7 +63,7 @@
 }
 
 .rightSidebar {
-  width: 250px;
+  width: 20%;
   padding: 0px 30px;
   border-left: 1px solid #f0f0f0;
   margin:0 !important;    
