@@ -117,7 +117,7 @@ class Main extends React.Component {
                                       <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
                                       <li>{'Assigned To: '+ item.AssignedTo}</li>
                                       {!!item.Region && <li>{'Region: '+ item.Region}</li>}
-                                      <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'purple': 'black'}}>{item.Priority}</span> </li>
+                                      <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'red': '#9f09a9c9'}}>{item.Priority}</span> </li>
                                       {!!item.ResolutionNotes && <li>{'Resolution Notes: '+ item.ResolutionNotes}</li>}
                                       <li style={{color: item.State == 'Closed'? 'green': 'red'}}>{item.State}</li>
                                       </ul>

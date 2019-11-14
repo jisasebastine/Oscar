@@ -6,7 +6,7 @@
   "State":"Closed",
   "Region": "EMEA",
   "AssignmentGroup": "ITOPS-Sales-Support",
-  "AssignedTo": "Joyce James",
+  "AssignedTo": "Sowmya Tiramdasu",
   "Source": "Self-Service",
   "ResponseLevel": "Normal",
   "Priority": "High",
@@ -14,6 +14,7 @@
   "Category": "Functionality",
   "Impact": "Medium",
   "Urgency": "High",
-    "Endpoint": "ServiceNow"
+  "Endpoint": "ServiceNow",
+  "ResolutionNotes": "User Error"
   }
 ]

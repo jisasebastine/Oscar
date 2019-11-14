@@ -6,15 +6,16 @@
   "State":"InProgress",
   "Region": "AMER",
   "AssignmentGroup": "ITOPS-Sales-Support",
-  "AssignedTo": "John Hamburg",
+  "AssignedTo": "Swapnil Shinde",
   "Source": "Self-Service",
   "ResponseLevel": "Normal",
-  "Priority": "High",
+  "Priority": "Medium",
   "Product":"VIVP",
   "Category": "Functionality",
   "Impact": "Medium",
   "Urgency": "High",
-  "Endpoint": "ServiceNow"
+  "Endpoint": "ServiceNow",
+  "ResolutionNotes": "Defect#5098017 has been raised. Root cause was found by OSC and resolved"
   }
 ]
   

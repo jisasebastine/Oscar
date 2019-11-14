@@ -9,11 +9,12 @@
   "AssignedTo": "Saurav Seth",
   "Source": "Self-Service",
   "ResponseLevel": "Normal",
-  "Priority": "High",
+  "Priority": "Medium",
   "Product":"PowerEdge",
   "Category": "Functionality",
   "Impact": "Medium",
   "Urgency": "High",
-  "Endpoint": "ServiceNow"
+  "Endpoint": "ServiceNow",
+  "ResolutionNotes": "Defect#5041017 has been raised for traction. Note that it's a Sev 3 defect, targeted for June release."
   }
 ]

@@ -6,7 +6,7 @@
   "State":"InProgress",
   "Region":"AMER",
   "AssignmentGroup": "ITOPS-Sales-Support",
-  "AssignedTo": "Joyce James",
+  "AssignedTo": "Narendra Solanki",
   "Source": "Self-Service",
   "ResponseLevel": "Normal",
   "Priority": "High",
@@ -15,7 +15,8 @@
   "Impact": "Medium",
   "Urgency": "High",
   "Endpoint": "ServiceNow",
-  "RelatedIncidentId":"INC4024785"
+  "RelatedIncidentId":"INC4024785",
+  "ResolutionNotes": "IIS reset on the environment"
   }
 ]
 

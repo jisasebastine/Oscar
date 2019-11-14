@@ -4,7 +4,7 @@
   "Title": "Send to Quote issue in Dellstar",
   "Description": "Send to Quote not working in Dellstar",
   "State":"InProgress",
-  "Region":"AMER",
+  "Region":"LATAM",
   "AssignmentGroup": "ITOPS-Sales-Support",
   "AssignedTo": "Joyce James",
   "Source": "Self-Service",
@@ -15,6 +15,7 @@
   "Impact": "Medium",
   "Urgency": "High",
   "Endpoint": "ServiceNow",
-  "RelatedIncidentId":"INC4024785"
+  "RelatedIncidentId":"INC4024785",
+  "ResolutionNotes": "#Defect 4985799 was raised."
   }
 ]

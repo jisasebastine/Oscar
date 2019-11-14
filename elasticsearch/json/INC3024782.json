@@ -6,7 +6,7 @@
   "State":"Closed",
   "Region": "APJ",
   "AssignmentGroup": "ITOPS-Sales-Support",
-  "AssignedTo": "Joyce James",
+  "AssignedTo": "Narenda Solanki",
   "Source": "Self-Service",
   "ResponseLevel": "Normal",
   "Priority": "High",
@@ -14,6 +14,7 @@
   "Category": "Performance",
   "Impact": "Medium",
   "Urgency": "High",
-  "Endpoint": "ServiceNow"
+  "Endpoint": "ServiceNow",
+  "ResolutionNotes": "Found duplicate network calls"
   }
 ]
