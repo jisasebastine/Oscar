@@ -27,7 +27,7 @@ class Main extends React.Component {
             placeholder="Search by Incident ID or Keyword..."
             className="datasearch"
             onValueChange = {(value) => { 
-              if(value == '') this.setState({...this.state, loadResults:false})
+              if(value == '') this.setState({...this.state, loadResults:false, showImage:false})
             }}
             onValueSelected = {(value) => {              
               console.log(value); 
