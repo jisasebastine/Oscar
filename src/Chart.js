@@ -40,18 +40,26 @@ class Doghnut extends React.Component {
       });
       return (
         <div>
-          <RadialChart
-            data={regionChartData}
-            width={200}
-            height={200}
-            showLabels={true} /> 
-          {regionChartData.length>0 && <h2 className="chartTitle">Region</h2>  }
-          <RadialChart
-            data={teamChartData}
-            width={200}
-            height={200} 
-            showLabels={true} />         
-          {teamChartData.length>0 && <h2 className="chartTitle">Team</h2>  }
+          {regionChartData.length>0 && 
+          <div>
+            <RadialChart
+              data={regionChartData}
+              width={200}
+              height={200}
+              showLabels={true} /> 
+            <h2 className="chartTitle">Region</h2>  
+          </div>
+          }
+          {teamChartData.length>0 &&
+          <div>
+            <RadialChart
+              data={teamChartData}
+              width={200}
+              height={200} 
+              showLabels={true} />         
+            <h2 className="chartTitle">Team</h2>
+          </div>
+          }
         </div>        
       );
     }
