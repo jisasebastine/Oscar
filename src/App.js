@@ -109,7 +109,7 @@ class Main extends React.Component {
                 <ReactiveList
                   componentId="incidents"
                   size={4}
-                  pagination={true}
+                  pagination={!this.state.showRelatedIncidents && true}
                   react={{
                       and: ['mainSearch'],
                   }}
