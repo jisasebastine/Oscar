@@ -24,11 +24,15 @@ class Doghnut extends React.Component {
           }
         }
       });
-      console.log("Region: ", regionData);
-      console.log("Team: " , teamData);
       const radius = {
         innerRadius: 5, 
-        radius : 10
+        radius : 10,
+        labelsStyle : {
+          color: "red",
+          fontSize: 8,
+          fontFamily: "Lato Bold, Lato",
+          letterSpacing: 0.4
+        }
       };
       var regionChartData = [];
       var teamChartData = [];
@@ -42,22 +46,22 @@ class Doghnut extends React.Component {
         <div>
           {regionChartData.length>0 && 
           <div>
+          <h4 className="chartTitle">Regions Impacted</h4>  
             <RadialChart
               data={regionChartData}
               width={200}
               height={200}
               showLabels={true} /> 
-            <h2 className="chartTitle">Region</h2>  
           </div>
           }
           {teamChartData.length>0 &&
           <div>
+          <h4 className="chartTitle">Teams Involved</h4>
             <RadialChart
               data={teamChartData}
               width={200}
               height={200} 
               showLabels={true} />         
-            <h2 className="chartTitle">Team</h2>
           </div>
           }
         </div>        

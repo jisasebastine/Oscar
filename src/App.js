@@ -3,14 +3,16 @@ import { ReactiveBase, DataSearch, ResultCard, ReactiveList, ResultList } from '
 import './App.css';
 import config from './config';
 import Doghnut from './Chart';
+import RelatedIncident from './RelatedIncident';
 
 class Main extends React.Component {
   state = {
     loadResults : false,
-    showImageForIncident : false,
-    showImage : false
+    showImage : false,
+    showRelatedIncidents: false
   }
   render() {
+    console.log(this.state);
     return (
       <div className="main-container">
         <ReactiveBase
@@ -22,30 +24,30 @@ class Main extends React.Component {
           <span className="inc">INC</span><span className="pedia">yclopedia</span>
           <DataSearch
             componentId="mainSearch"
-            dataField={["IncidentId", "Description", "Team", "Title", "RelatedIncidentId"]}
+            dataField={["IncidentId", "Description", "Team", "Title"]}
             queryFormat="or"
             placeholder="Search by Incident ID or Keyword..."
             className="datasearch"
             onValueChange = {(value) => { 
-              if(value == '') this.setState({...this.state, loadResults:false, showImage:false})
+              if(value == '') this.setState({...this.state, loadResults:false, showImage:false, showRelatedIncidents:false})
             }}
-            onValueSelected = {(value) => {              
+            onValueSelected = {(value) => { 
               console.log(value); 
               if(value != '' && value != null) {
-                this.setState({...this.state, loadResults:true, showImage: true});
-              }
-              // else {                
-              //   this.setState({...this.state, loadResults:false, showImage: false});
-              // }
-              // if(value == 'INC4024785') {
-              //   this.setState({...this.state, loadResults:true, showImageForIncident:true, showImage: true});
-              // }
-              // else if(value.includes("quantity") || value.includes("Quantity")) {
-              //   this.setState({...this.state, loadResults:true, showImageForIncident:false, showImage: true});
-              // }else {
-              //   this.setState({...this.state, showImage: false, loadResults:true});
-              // }
+                this.setState({loadResults:true, showImage: true});
+              }else {
+                this.setState({loadResults:false, showImage:false, showRelatedIncidents:false})
+              }       
               
+              // show related incidents  
+              const regex = new RegExp('^INC[0-9]+$'); // if it is an Incident Id
+              if(!!value.match(regex)) {
+                this.setState({
+                  showRelatedIncidents: true});
+              } else {
+                this.setState({ 
+                  showRelatedIncidents: false});
+              }
             }}
             innerClass={{
               "input": "searchbox",
@@ -101,62 +103,61 @@ class Main extends React.Component {
               </div>            
             <div className={"mainBar"}>
             <h2>Incidents</h2>
-              {!this.state.loadResults && <div> No Results found. </div>}
+              { !this.state.loadResults && <div> No Results found. </div>}
               { this.state.loadResults &&
-              <ReactiveList
-                componentId="incidents"
-                size={5}
-                pagination={true}
-                react={{
+              <React.Fragment>
+                <ReactiveList
+                  componentId="incidents"
+                  size={4}
+                  pagination={true}
+                  react={{
+                      and: ['mainSearch'],
+                  }}
+                  render={({ data }) => (
+                      <ReactiveList.ResultCardsWrapper>
+                          {data.map(item => (                        
+                              <React.Fragment> 
+                                {item.Endpoint == 'ServiceNow' &&
+                                  <ResultList key={item._id}>
+                                    <ResultList.Content>
+                                      <ResultList.Title
+                                          dangerouslySetInnerHTML={{
+                                              __html: item.Description,
+                                          }}
+                                      />
+                                      <ResultList.Description>
+                                        <div className="description">
+                                          <ul style={{'list-style-type': 'none'}}>
+                                          <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
+                                          <li>{'Assigned To: '+ item.AssignedTo}</li>
+                                          {!!item.Region && <li>{'Region: '+ item.Region}</li>}
+                                          <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'red': '#9f09a9c9'}}>{item.Priority}</span> </li>
+                                          {!!item.ResolutionNotes && <li>{'Resolution Notes: '+ item.ResolutionNotes}</li>}
+                                          <li style={{color: item.State == 'Closed'? 'green': 'red'}}>{item.State}</li>
+                                          </ul>
+                                        </div>
+                                      </ResultList.Description>
+                                      </ResultList.Content>
+                                  </ResultList>
+                                }
+                              </React.Fragment>
+                          ))}
+                      </ReactiveList.ResultCardsWrapper>
+                  )}>
+                </ReactiveList>
+                {!!this.state.showRelatedIncidents && 
+                <ReactiveList
+                  componentId="relatedIncidentComponent"
+                  react={{
                     and: ['mainSearch'],
-                }}
-                render={({ data }) => (
-                    <ReactiveList.ResultCardsWrapper>
-                        {data.map(item => (                        
-                            <React.Fragment> 
-                              {item.Endpoint == 'ServiceNow' &&
-                                <ResultList key={item._id}>
-                                  <ResultList.Content>
-                                    <ResultList.Title
-                                        dangerouslySetInnerHTML={{
-                                            __html: item.Description,
-                                        }}
-                                    />
-                                    <ResultList.Description>
-                                      <div className="description">
-                                        <ul style={{'list-style-type': 'none'}}>
-                                        <li><b>{'IncidentId: ' + item.IncidentId}</b></li>
-                                        <li>{'Assigned To: '+ item.AssignedTo}</li>
-                                        {!!item.Region && <li>{'Region: '+ item.Region}</li>}
-                                        <li>{'Priority: '} <span style={{color: item.Priority == 'High'? 'red': '#9f09a9c9'}}>{item.Priority}</span> </li>
-                                        {!!item.ResolutionNotes && <li>{'Resolution Notes: '+ item.ResolutionNotes}</li>}
-                                        <li style={{color: item.State == 'Closed'? 'green': 'red'}}>{item.State}</li>
-                                        </ul>
-                                      </div>
-                                    </ResultList.Description>
-                                    </ResultList.Content>
-                                </ResultList>
-                              }  
-                              {item.IncidentId == item.RelatedIncidentId && item.IncidentId != null &&
-                              <ResultList  className="related"> <h2><em>Related Incidents </em></h2></ResultList>
-                              }
-                            </React.Fragment>
-                        ))}
-                    </ReactiveList.ResultCardsWrapper>
-                )}
-              />
+                  }}
+                  render = {({data}) => (
+                    <RelatedIncident searchKeyword={data}/>
+                  )}
+                ></ReactiveList> }
+              </React.Fragment>
               }    
               </div>
-              {/* {this.state.showImage && 
-              <div className={"rightSidebar"}>
-              <div className="vertical">
-              <div><h3>Teams Involved</h3></div>
-                <div><img src={this.state.showImageForIncident? "incident_team.png": "keyword_team.png"} width="200"/></div>
-                <div><h3>Regions Impacted</h3></div>
-                <div><img src={this.state.showImageForIncident? "incident_region.png": "keyword_region.png"} width="200"/></div>
-              </div>
-              </div> }  */}
-              
             <div className="rightSidebar">
               <div className="vertical">  
               {this.state.showImage &&
