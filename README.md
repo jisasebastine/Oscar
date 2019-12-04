@@ -27,7 +27,7 @@ https://stackoverflow.com/questions/15936616/import-index-a-json-file-into-elast
 
 `cd elasticsearch/json`
 
-`elasticsearch_loader --index incidents --type incident json .*`
+`elasticsearch_loader --index swat --type incident json .*`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
