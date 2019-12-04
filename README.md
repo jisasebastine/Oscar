@@ -1,3 +1,32 @@
+## INCyclopedia
+This project is developed at DCE Hackathon at Dell, RoundRock and became the regional best.
+
+## Steps to get started:
+### Useful links
+Download Elastisearch
+
+https://www.elastic.co/downloads/elasticsearch
+
+Download Kibana
+
+https://www.elastic.co/downloads/kibana
+
+Install python to run elasticsearch-loader
+
+https://www.python.org/downloads/windows/
+
+Get Elasticsearch-loader python package to index json files
+
+https://pypi.org/project/elasticsearch-loader/
+
+How to index json files in bulk
+
+https://stackoverflow.com/questions/15936616/import-index-a-json-file-into-elasticsearch
+
+`pip install elasticsearch-loader`
+
+`elasticsearch_loader --index incidents --type incident json file1.json file2.json`
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
