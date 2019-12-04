@@ -24,8 +24,8 @@ How to index json files in bulk
 https://stackoverflow.com/questions/15936616/import-index-a-json-file-into-elasticsearch
 
 `pip install elasticsearch-loader`
-
-`elasticsearch_loader --index incidents --type incident json file1.json file2.json`
+`cd elasticsearch/json`
+`elasticsearch_loader --index incidents --type incident json .*`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
